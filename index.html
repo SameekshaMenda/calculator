@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+		
+
+		h1{
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+		#calculator {
+			margin: 0 auto;
+			width: 300px;
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+		#display {
+			background-color: #eee;
+			border-radius: 5px;
+			padding: 10px;
+			margin-bottom: 20px;
+			text-align: right;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+		button {
+			width:50px;
+			background-color: #4c98af;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin-right: 5px;
+			margin-bottom: 10px;
+			font-size: 18px;
+			cursor: pointer;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+		button:hover {
+			background-color:#296c88;
+		}
+		button:active {
+			background-color: #4c91af;
+			box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+		button.clear {
+			background-color: #f4a536;
+		}
+		button.clear:hover {
+			background-color: #d32f2f;
+		}
+		button.clear:active {
+			background-color: #d32f2f;
+			box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+		button.reset {
+			width:100px;
+			background-color:  rgb(4, 95, 186);
+		}
+		button.reset:hover {
+			background-color: rgb(60, 136, 211);
+		}
+		button.reset:active {
+			background-color:rgb(4, 95, 186);
+			box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+
+		</style>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<div id="calculator">
+		<div id="display"></div>
+		<button onclick="addToDisplay('0')">0</button>
+		<button onclick="addToDisplay('1')">1</button>
+		<button onclick="addToDisplay('2')">2</button>
+		<button onclick="addToDisplay('3')">3</button>
+		<button onclick="addToDisplay('4')">4</button>
+		<button onclick="addToDisplay('5')">5</button>
+		<button onclick="addToDisplay('6')">6</button>
+		<button onclick="addToDisplay('7')">7</button>
+		<button onclick="addToDisplay('8')">8</button>
+		<button onclick="addToDisplay('9')">9</button>
+		<button onclick="addToDisplay('/')">/</button>
+		<button onclick="addToDisplay('*')">*</button>
+		<button onclick="addToDisplay('-')">-</button>
+		<button onclick="addToDisplay('.')">.</button>
+		<button onclick="addToDisplay('+')">+</button>
+		<button onclick="calculate()">=</button>
+		<button onclick="clearOneDigit()" class="clear">C</button>
+		<button onclick="clearDisplay()"class="reset">Reset</button>
+	</div>
+	<script>
+		let display = document.getElementById('display');
+		let expression = '';
+
+		function addToDisplay(value) {
+			expression += value;
+			display.innerHTML = expression;
+		}
+
+		function calculate() {
+			try {
+				expression = eval(expression);
+				display.innerHTML = expression;
+			} catch (error) {
+				display.innerHTML = 'Error';
+			}
+		}
+
+		function clearDisplay() {
+			expression = '';
+			display.innerHTML = '';
+		}
+		function backspace() {
+                 displayValue = displayValue.slice(0, -1);
+                if (displayValue === '')
+				{
+                   displayValue = '0';
+                }
+				
+    updateDisplay();
+}
+function clearOneDigit() {
+			expression = expression.slice(0, -1);
+			display.innerHTML = expression;
+		}
+	</script>
+</body>
+</html>
